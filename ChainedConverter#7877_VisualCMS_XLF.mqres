@@ -1,0 +1,62 @@
+﻿<MemoQResource ResourceType="FilterConfigs" Version="1.0">
+  <Resource>
+    <Guid>73cbc5e4-95ba-4ac8-b12d-ac4988539383</Guid>
+    <FileName>ChainedConverter#7877_VisualCMS_XLF</FileName>
+    <Name>7877_VisualCMS_XLF</Name>
+    <Description />
+    <FilterName>MemoQ.DocConverters.ChainedConverter.ChainedConverter</FilterName>
+    <FirstFilterConfigurationConverterName>MemoQ.DocConverters.RegexText.RegexTextConverter</FirstFilterConfigurationConverterName>
+  </Resource>
+</MemoQResource>
+<MemoQChainedFilterConfiguration filtername="Chained Filter" version="V1">
+  <ChainedFilterConfigurationElement convertername="MemoQ.DocConverters.RegexText.RegexTextConverter">
+<MemoQFilterConfiguration filtername="Regex Text Filter" Version="V1">
+  <GeneralSettings ImportEncoding="Unicode (UTF-8)" HasBOM="no" OverrideImportCodepageFromBOM="yes" NewLineType="Any" ParagraphSeparatorType="CustomRegex" ParagraphStartRegex="(&lt;trans-unit)" />
+  <ParagraphSettings>
+    <ParagraphRule RuleIndex="0" Rule="(?m)&lt;trans-unit[^&gt;]+&gt;(?:\s+)&lt;source&gt;((.(?!&lt;/source&gt;))+.&lt;/source&gt;)(?:\s+)&lt;target&gt;&lt;!\[CDATA\[((.(?!\]\]&gt;&lt;/target&gt;))+.)\]\]&gt;&lt;/target&gt;(?:\s+&lt;/trans-unit&gt;)">
+      <ContentGroups>
+        <ContentGroup GroupId="3" Context="" Comment="" LengthGroupId="" />
+      </ContentGroups>
+    </ParagraphRule>
+  </ParagraphSettings>
+  <IncludeExcludeSettings IncludeContent="yes">
+    <IncludeExcludeRule RuleIndex="0" Before="" Rule="(?s)((?&lt;=&gt;(\s|^|))\b[^&lt;]([^\[|\]|&lt;|&gt;]+))((?(?=&lt;sup&gt;)&lt;sup&gt;(.*?&lt;/sup&gt;([^&lt;|\[|\r]+))|&lt;br&gt;([^&lt;|\[|\r]+))|)" After="" />
+    <IncludeExcludeRule RuleIndex="1" Before="" Rule="(?s)(?&lt;=\b(name|description|title|show_title|title_close|title_open|headline)=&quot;)([^&quot;]+)" After="" />
+    <IncludeExcludeRule RuleIndex="2" Before="" Rule="(?s)(?&lt;=\[[^\]]+\])(\b[^\[|\]|&lt;|&gt;][^\[|\]|&lt;|&gt;]+)" After="" />
+    <IncludeExcludeRule RuleIndex="3" Before="" Rule="(?s)^[^\[|\]|&lt;|&gt;|\n|&quot;]+" After="" />
+    <IncludeExcludeRule RuleIndex="4" Before="&lt;span.*?&gt;" Rule="(?s).*?" After="&lt;/span&gt;" />
+    <IncludeExcludeRule RuleIndex="5" Before="alt=\&quot;" Rule="(?s).*?" After="\&quot;" />
+  </IncludeExcludeSettings>
+  <ReferenceFiles>
+    <ReferenceFilePath>C:\Users\jszabo\Desktop\exp_sample.xlf</ReferenceFilePath>
+    <ReferenceFilePath>C:\Users\julian.ardoin\Desktop\Mercedes\001\de-de_en-gb_marketing_00059.xlf</ReferenceFilePath>
+    <ReferenceFilePath>C:\Users\julian.ardoin\Desktop\Mercedes\001\de-de_en-gb_marketing_00059_out.xlf</ReferenceFilePath>
+    <ReferenceFilePath>D:\Desktop\memoQVisualCMS\de-de_en-gb_marketing_00059_auto (1).xlf</ReferenceFilePath>
+    <ReferenceFilePath>D:\Desktop\memoQVisualCMS\de-de_en-gb_marketing_00059manual.xlf</ReferenceFilePath>
+  </ReferenceFiles>
+</MemoQFilterConfiguration>
+</ChainedFilterConfigurationElement>
+  <ChainedFilterConfigurationElement convertername="MemoQ.DocConverters.RegexTagger.RegexConverter">
+<MemoQFilterConfiguration filtername="Regex Filter" version="V1">
+  <TaggerRules handlestabsandnewlines="False">
+    <TaggerRule tagtype="Open" required="False" displaytext="$0">
+      <Expression>&lt;[^/]*?&gt;</Expression>
+    </TaggerRule>
+    <TaggerRule tagtype="Close" required="False" displaytext="$0">
+      <Expression>&lt;/[^/]*?&gt;</Expression>
+    </TaggerRule>
+    <TaggerRule tagtype="Empty" required="False" displaytext="$0">
+      <Expression>&lt;[^/].*?/&gt;</Expression>
+    </TaggerRule>
+    <TaggerRule tagtype="Open" required="False" displaytext="$0">
+      <Expression>&lt;[^/].*?[^/]&gt;</Expression>
+    </TaggerRule>
+    <TaggerRule tagtype="Empty" required="False" displaytext="$0">
+      <Expression>&amp;[^\s]+?;</Expression>
+    </TaggerRule>
+  </TaggerRules>
+  <ExampleText>
+  </ExampleText>
+</MemoQFilterConfiguration>
+</ChainedFilterConfigurationElement>
+</MemoQChainedFilterConfiguration>
